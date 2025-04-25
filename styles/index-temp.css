@@ -1,5 +1,5 @@
 body {
-  background-color: #000;
+  background-color: #0B0B45;
 }
 
 .container {
@@ -48,25 +48,13 @@ a {
   margin-left: auto;
 }
 
-.link:hover {
-  text-decoration:steelblue;
+a:hover, 
+a:active, 
+a:focus,
+a:focus-visible {
+  color:steelblue;
 }
 
-.link:active {
-  text-decoration: steelblue;
-}
-
-.link:focus {
-  text-decoration: steelblue;
-}
-
-.link:focus-visible {
-  text-decoration: steelblue;
-}
-
-.link[data-wf-focus-visible] {
-  text-decoration: steelblue;
-}
 
 @media screen and (max-width: 991px) {
   .container {
