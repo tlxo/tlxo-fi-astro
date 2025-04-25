@@ -1,6 +1,6 @@
 # Deployment status
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/3c972b40-56ac-4dbd-90ed-77ffa1e93aca/deploy-status)](https://app.netlify.com/sites/tlxo-fi-blog/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c86f0f42-b4ff-4d7b-a178-53f5375f2c26/deploy-status)](https://app.netlify.com/sites/tlxo-fi/deploys)
 
 ## 🧞 Commands
 
