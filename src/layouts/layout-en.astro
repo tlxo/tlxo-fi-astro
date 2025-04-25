@@ -1,0 +1,176 @@
+---
+const { frontmatter } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{frontmatter.title}</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style>
+	:root {
+		--astro-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	}
+	body {
+		font-family: var(--astro-font);
+	}
+		* {
+			box-sizing: border-box;
+		}
+		h1 {
+			font-size: 2.5rem;
+			margin: 0;
+		}
+		h2 {
+			font-size: 2rem;
+			margin: 0;
+		}
+		h3 {
+			font-size: 1.5rem;
+			margin: 0;
+		}
+		p {
+			margin: 0;
+			line-height: 1.5;
+		}
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+		a:hover {
+			text-decoration: underline;
+		}
+		ul {
+			list-style: none;
+			padding: 0;
+		}
+		li {
+			margin: 0.5rem 0;
+		}
+		hr {
+			border: 0;
+			border-top: 1px solid #ccc;
+			margin: 2rem 0;
+		}
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 1rem;
+		}
+		.header {
+			text-align: center;
+			margin-bottom: 2rem;
+		}
+		.header h1 {
+			margin-bottom: 0.5rem;
+		}
+		.header p {
+			margin-bottom: 0;
+		}
+		.footer {
+			text-align: center;
+			margin-top: 2rem;
+		}
+		.footer p {
+			margin-bottom: 0;
+		}
+		.footer a {
+			color: #0070f3;
+			text-decoration: none;
+		}
+		.footer a:hover {
+			text-decoration: underline;
+		}
+		@media (max-width: 600px) {
+			.container {
+				padding: 0 1rem;
+			}
+			h1 {
+				font-size: 2rem;
+			}
+			h2 {
+				font-size: 1.5rem;
+			}
+			h3 {
+				font-size: 1.25rem;
+			}
+		}				
+
+		@media (prefers-color-scheme: dark) {
+			body {
+				background-color: #121212;
+				color: #ffffff;
+			}
+			a {
+				color: #bb86fc;
+			}
+			a:hover {
+				text-decoration: underline;
+			}
+			hr {
+				border-top: 1px solid #444;
+			}
+		}
+		@media (prefers-color-scheme: light) {
+			body {
+				background-color: #ffffff;
+				color: #000000;
+			}
+			a {
+				color: #0070f3;
+			}
+			a:hover {
+				text-decoration: underline;
+			}
+			hr {
+				border-top: 1px solid #ccc;
+			}
+		}
+		@media (prefers-color-scheme: no-preference) {
+			body {
+				background-color: #f0f0f0;
+				color: #000000;
+			}
+			a {
+				color: #0070f3;
+			}
+			a:hover {
+				text-decoration: underline;
+			}
+			hr {
+				border-top: 1px solid #ccc;
+			}
+		}			
+		
+</style>
+<script>
+import type { ActionAPIContext } from "astro:actions";
+
+	// This script is used to handle the dark mode toggle
+	const toggle = document.querySelector('#dark-mode-toggle');
+	const body = document.body;
+
+	toggle.addEventListener('click', () => {
+		body.classList.toggle('dark-mode');
+	});
+	if (body.classList.contains('dark-mode')) {
+		localStorage.setItem('dark-mode', 'true');
+	} else {
+		localStorage.setItem('dark-mode', 'false');
+	}
+	if (localStorage.getItem('dark-mode') === 'true') {
+		body.classList.add('dark-mode');
+	} else {
+		body.classList.remove('dark-mode');
+	}
+</script>
+
