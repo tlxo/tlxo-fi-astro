@@ -1,5 +1,5 @@
 # What is this
-This is the current repo to serve tlxo.fi 
+This is the current repo to serve [tlxo.fi](https://tlxo.fi).
 
 ## Purpose
 Building a personal blog with Astro, like it was both 2005 and 2025.
