@@ -7,6 +7,6 @@ author: 'Toni'
 ![](/images/tlxo.png )
 
 # TLXO Creative Services
-Vi bygger inklusiva digitala produkter och tjänster.
+Inklusiva digitala produkter och tjänster.
 
 [hej@lxo.se](mailto:hej@lxo.se)
