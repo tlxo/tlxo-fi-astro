@@ -1,8 +1,12 @@
 ---
-layout: ../layouts/layout-en.astro
-title: 'Hello, world!'
+layout: ../layouts/layout-index-en.astro
+title: 'TLXO Creative Services'
 author: 'Toni'
 ---
 
-# Another day, another framework
-Building a new site with a new framework. Who would have thought?
+![](/images/tlxo.png )
+
+# TLXO Creative Services
+Building inclusive digital products.
+
+[hello@tlxo.fi](mailto:hello@tlxo.fi)
