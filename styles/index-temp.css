@@ -27,7 +27,7 @@ p {
   font-family: "Atkinson Hyperlegible Next", serif;
   font-optical-sizing: auto;
   font-weight: 400;  
-  color: #fff;
+  color: #4682b3;
   font-size: 24px;
   line-height: 27px;
   font-style: italic;
@@ -38,7 +38,7 @@ a {
   font-family: "Atkinson Hyperlegible Next", serif;
   font-optical-sizing: auto;
   font-weight: 400;
-  color: #fff;
+  color: #4682b3;
   font-size: 36px;
   font-style: italic;
   text-align: center;
@@ -52,7 +52,7 @@ a:hover,
 a:active, 
 a:focus,
 a:focus-visible {
-  color:steelblue;
+  color: #d377b3;
 }
 
 

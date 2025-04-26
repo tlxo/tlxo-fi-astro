@@ -4,8 +4,7 @@ title: 'TLXO Creative Services'
 author: 'Toni'
 ---
 
-![](/images/tlxo.png )
-
+![](/images/tlxo-cs-logo.svg)
 # TLXO Creative Services
 Inclusive digital products and services.
 
