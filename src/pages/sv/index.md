@@ -8,4 +8,4 @@ author: 'Toni'
 # TLXO Creative Services
 Inklusiva digitala produkter och tjänster.
 
-[hej@lxo.se](mailto:hej@lxo.se)
+[hej@tlxo.se](mailto:hej@tlxo.se)
