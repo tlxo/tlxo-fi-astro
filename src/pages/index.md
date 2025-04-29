@@ -9,3 +9,5 @@ author: 'Toni'
 Inclusive digital products and services.
 
 [hello@tlxo.fi](mailto:hello@tlxo.fi)
+
+[github.com/tlxo](https://github.com/tlxo)
