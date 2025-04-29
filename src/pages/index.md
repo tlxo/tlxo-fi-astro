@@ -10,4 +10,4 @@ Inclusive digital products and services.
 
 [hello@tlxo.fi](mailto:hello@tlxo.fi)
 
-[github.com/tlxo](https://github.com/tlxo)
+<a class="hidden" href="https://github.com/tlxo" rel="me">github.com/tlxo</a>

@@ -10,4 +10,4 @@ Inklusiva digitala produkter och tjänster.
 
 [hej@tlxo.se](mailto:hej@tlxo.se)
 
-[github.com/tlxo](https://github.com/tlxo)
+<a class="hidden" href="https://github.com/tlxo" rel="me">github.com/tlxo</a>
