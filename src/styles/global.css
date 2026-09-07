@@ -1,0 +1,205 @@
+@import 'modern-normalize/modern-normalize.css';
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	background-color: var(--color-bg);
+	color: var(--color-text);
+	font-family: var(--font-sans);
+	font-size: var(--text-base);
+	line-height: var(--leading-normal);
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+::selection {
+	background-color: var(--color-selection-bg);
+	color: var(--color-selection-text);
+}
+
+h1,
+h2,
+h3,
+h4 {
+	line-height: var(--leading-tight);
+	text-wrap: balance;
+	margin: 0 0 var(--space-sm);
+	font-weight: 600;
+}
+
+h1 {
+	font-size: var(--text-3xl);
+}
+h2 {
+	font-size: var(--text-xl);
+}
+h3 {
+	font-size: var(--text-lg);
+}
+
+p,
+ul,
+ol {
+	margin: 0 0 var(--space-sm);
+}
+
+p {
+	text-wrap: pretty;
+}
+
+a {
+	color: var(--color-link);
+	text-underline-offset: 0.2em;
+	text-decoration-thickness: 1px;
+}
+
+a:hover,
+a:focus-visible {
+	color: var(--color-link-hover);
+	text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+	outline: 3px solid var(--color-focus);
+	outline-offset: 2px;
+	border-radius: var(--radius-sm);
+}
+
+img,
+svg,
+video {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+hr {
+	border: 0;
+	border-top: var(--border-thin);
+	margin: var(--space-lg) 0;
+}
+
+code,
+pre,
+kbd {
+	font-family: var(--font-mono);
+	font-size: 0.9em;
+}
+
+:not(pre) > code {
+	background-color: var(--color-surface-raised);
+	padding: 0.15em 0.4em;
+	border-radius: var(--radius-sm);
+}
+
+pre {
+	padding: var(--space-sm);
+	border-radius: var(--radius-md);
+	overflow-x: auto;
+	border: var(--border-thin);
+}
+
+blockquote {
+	margin: var(--space-md) 0;
+	padding-left: var(--space-sm);
+	border-left: 3px solid var(--color-accent);
+	color: var(--color-text-muted);
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: var(--space-md);
+}
+
+th,
+td {
+	text-align: left;
+	padding: var(--space-2xs) var(--space-xs);
+	border-bottom: var(--border-thin);
+}
+
+figure {
+	margin: var(--space-md) 0;
+}
+
+figcaption {
+	font-size: var(--text-sm);
+	color: var(--color-text-muted);
+	margin-top: var(--space-2xs);
+}
+
+/* Shiki emits both themes; swap them with the active colour scheme. */
+[data-theme='light'] .astro-code,
+[data-theme='light'] .astro-code span {
+	color: var(--shiki-light) !important;
+	background-color: var(--shiki-light-bg) !important;
+}
+
+@media (prefers-color-scheme: light) {
+	:root:not([data-theme]) .astro-code,
+	:root:not([data-theme]) .astro-code span {
+		color: var(--shiki-light) !important;
+		background-color: var(--shiki-light-bg) !important;
+	}
+}
+
+.container {
+	width: 100%;
+	max-width: var(--content-width);
+	margin-inline: auto;
+	padding-inline: var(--space-sm);
+}
+
+.container--wide {
+	max-width: var(--wide-width);
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+	border: 0;
+}
+
+.skip-link {
+	position: absolute;
+	left: var(--space-sm);
+	top: calc(-1 * var(--space-2xl));
+	z-index: 10;
+	background-color: var(--color-surface-raised);
+	color: var(--color-text);
+	padding: var(--space-2xs) var(--space-sm);
+	border-radius: var(--radius-sm);
+	text-decoration: none;
+	transition: top 0.15s ease-in-out;
+}
+
+.skip-link:focus {
+	top: var(--space-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}

@@ -1,14 +1,19 @@
-https://tlxo-fi.netlify.app/* https://tlxo.fi/ 301!
+# Domain aliases. :splat preserves the path so deep links survive the redirect.
+https://tlxo-fi.netlify.app/*  https://tlxo.fi/:splat  301!
+https://www.tlxo.fi/*          https://tlxo.fi/:splat  301!
 
-https://lxo.fi/* https://tlxo.fi/ 301!
-https://t.lxo.fi/* https://tlxo.fi/ 301!
-https://www.lxo.fi/* https://tlxo.fi/ 301!
+https://lxo.fi/*               https://tlxo.fi/:splat  301!
+https://t.lxo.fi/*             https://tlxo.fi/:splat  301!
+https://www.lxo.fi/*           https://tlxo.fi/:splat  301!
 
-https://www.tlxo.se/* https://tlxo.fi/sv/ 301!
-https://tlxo.se/* https://tlxo.fi/sv/ 301!
+# The .se domains used to point at /sv/, which no longer exists.
+https://tlxo.se/*              https://tlxo.fi/:splat  301!
+https://www.tlxo.se/*          https://tlxo.fi/:splat  301!
+https://lxo.se/*               https://tlxo.fi/:splat  301!
+https://www.lxo.se/*           https://tlxo.fi/:splat  301!
 
-https://www.lxo.se/* https://tlxo.fi/sv/ 301!
-https://lxo.se/* https://tlxo.fi/sv/ 301!
+https://laaxo.com/*            https://tlxo.fi/:splat  301!
+https://www.laaxo.com/*        https://tlxo.fi/:splat  301!
 
-https://laaxo.com/* https://tlxo.fi/ 301!
-https://www.laaxo.com/* https://tlxo.fi/ 301!
+# Retired Swedish one-pager.
+/sv/*  /  301!

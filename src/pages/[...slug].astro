@@ -1,0 +1,26 @@
+---
+import { getCollection, render } from 'astro:content';
+import PageLayout from '../layouts/PageLayout.astro';
+
+/**
+ * Catch-all for the `pages` collection. Declared at the top level, so it only
+ * ever receives paths that no more specific route already claimed.
+ */
+export async function getStaticPaths() {
+	const pages = await getCollection('pages', (entry) =>
+		import.meta.env.PROD ? !entry.data.draft : true,
+	);
+	return pages.map((page) => ({ params: { slug: page.id }, props: { page } }));
+}
+
+const { page } = Astro.props;
+const { Content } = await render(page);
+---
+
+<PageLayout
+	title={page.data.title}
+	description={page.data.description}
+	updatedDate={page.data.updatedDate}
+>
+	<Content />
+</PageLayout>

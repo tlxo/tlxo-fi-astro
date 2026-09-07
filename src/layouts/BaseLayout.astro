@@ -1,0 +1,50 @@
+---
+import SEO from '../components/SEO.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE } from '../consts';
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+	image?: string;
+	type?: 'website' | 'article';
+	publishedDate?: Date;
+	updatedDate?: Date;
+	tags?: readonly string[];
+	noindex?: boolean;
+	wide?: boolean;
+}
+
+const { wide = false, ...seo } = Astro.props;
+---
+
+<!doctype html>
+<html lang={SITE.lang}>
+	<head>
+		<SEO {...seo} />
+		{/* Applied before paint so the stored theme never flashes the wrong colours. */}
+		<script is:inline>
+			const stored = localStorage.getItem('theme');
+			if (stored === 'light' || stored === 'dark') {
+				document.documentElement.dataset.theme = stored;
+			}
+		</script>
+	</head>
+
+	<body>
+		<a href="#main" class="skip-link">Skip to content</a>
+		<Header />
+		<main id="main" class:list={['container', { 'container--wide': wide }, 'site-main']}>
+			<slot />
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.site-main {
+		padding-block: var(--space-lg) var(--space-xl);
+	}
+</style>

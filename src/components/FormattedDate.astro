@@ -1,0 +1,16 @@
+---
+interface Props {
+	date: Date;
+	prefix?: string;
+}
+
+const { date, prefix } = Astro.props;
+
+const formatted = date.toLocaleDateString('en-GB', {
+	year: 'numeric',
+	month: 'long',
+	day: 'numeric',
+});
+---
+
+<time datetime={date.toISOString()}>{prefix ? `${prefix} ${formatted}` : formatted}</time>
