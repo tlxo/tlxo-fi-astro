@@ -1,15 +1,13 @@
 ---
 title: 'About'
-description: 'Toni Laakso — writing about accessible, inclusive digital products.'
+description: 'Toni Laakso — writing about user experience, creating music, building instruments, and whatever happens to float my boat.'
 order: 1
 ---
 
-I'm Toni Laakso. I build digital products that work for the people who usually get designed
-around rather than designed for — mostly accessibility, front-end development, and the kind
-of early design review that stops expensive problems from being built in the first place.
+20+ years in software: release engineering, QA, product ownership, web development, and UX, with the last several years focused on digital accessibility.
 
-This site is a personal one. I write here about that work, and separately about things I
-make for fun. The two are tagged differently, so you can read one and skip the other.
-Nothing here speaks for my employer.
+What ties it all together is an interest toward problems that don't have a shape yet: I've founded and run a game studio, rebuilt QA processes from scratch, helped define how a company talks to its users... Lately I'm especially interested in how AI-assisted tooling can help teams build accessible software at scale, rather than just audit it after the fact.
 
-Get in touch at [toni@lxo.fi](mailto:toni@lxo.fi).
+Native Finnish, fluent Swedish and English.
+
+Of course, if I didn't need the money, I'd focus on playing jazz guitar.
