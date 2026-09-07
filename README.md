@@ -64,6 +64,38 @@ Tags must be lowercase kebab-case. This is enforced by the content schema, so a 
 - `src/content/projects/` — project entries, served at `/projects/<filename>/`
 - `src/content/authors/` — author records referenced by `author`
 
+### Projects
+
+Projects are not all software, so `kind` selects the vocabulary a project page uses. An
+instrument build gets "Materials and tools" where a web app gets "Built with".
+
+| Field      | Required | Notes                                                                |
+| :--------- | :------- | :------------------------------------------------------------------- |
+| `title`    | yes      |                                                                      |
+| `summary`  | yes      | One or two sentences, used in the list and social previews           |
+| `kind`     | yes      | `software`, `music`, `instrument`, `writing` or `other`              |
+| `year`     | yes      | Number                                                               |
+| `role`     | no       | Free text, e.g. `Design and development`, `Writing and production`   |
+| `madeWith` | no       | Stack, instruments, timbers — whatever it was made from              |
+| `links`    | no       | List of `{ label, url }`; covers source code, Bandcamp, photos, etc. |
+| `featured` | no       | `true` surfaces it on the home page                                  |
+| `draft`    | no       | `true` hides it from the production build                            |
+| `cover`    | no       | Requires `coverAlt`                                                  |
+
+```md
+---
+title: 'Tenor ukulele #2'
+summary: 'A concert-scale tenor built from a storm-felled birch.'
+kind: instrument
+role: 'Design and build'
+year: 2026
+madeWith: ['Birch', 'Spruce top', 'Hide glue', 'Shellac']
+links:
+  - label: 'Build photos'
+    url: 'https://example.com/album'
+---
+```
+
 ## Commands
 
 | Command           | Action                                                    |

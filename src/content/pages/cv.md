@@ -1,10 +1,8 @@
 ---
 title: 'CV'
-description: 'Curriculum Vitae'
-order: 1
+description: 'Toni Laakso — software generalist and accessibility specialist (IAAP CPWA), Tampere.'
+order: 2
 ---
-
-## Toni Laakso
 
 Software Generalist / Accessibility Specialist (IAAP CPWA)  
 Finnish (native) · Swedish & English (full professional)  
@@ -12,7 +10,7 @@ Finnish (native) · Swedish & English (full professional)
 
 ## Summary
 
-20+ years in software: release engineering, QA, product ownership, web development, and UX, with the last several years focused on digital accessibility, mostly through research, review, and direction rather than day-to-day implementation. 
+20+ years in software: release engineering, QA, product ownership, web development, and UX, with the last several years focused on digital accessibility, mostly through research, review, and direction rather than day-to-day implementation.
 
 ## Skills
 
@@ -25,7 +23,7 @@ Finnish (native) · Swedish & English (full professional)
 **Senior UX & Accessibility Specialist** | April 2023 – Present  
 Build accessible experiences with tooling matched to a team of specialists; own accessibility direction across projects.
 
-**Project Manager / Scrum Master** | October 2022 – March 2023   
+**Project Manager / Scrum Master** | October 2022 – March 2023  
 Ran a scrum team on a large public-sector software project, clearing delivery obstacles.
 
 **UX & Accessibility Specialist** | May 2021 – October 2022  

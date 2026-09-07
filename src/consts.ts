@@ -30,6 +30,7 @@ export const NAV: ReadonlyArray<{ label: string; href: string }> = [
 /** rel="me" links for IndieWeb identity verification. */
 export const SOCIAL: ReadonlyArray<{ label: string; href: string }> = [
 	{ label: 'GitHub', href: 'https://github.com/tlxo' },
+	{ label: 'LinkedIn', href: 'https://linkedin.com/in/tonilaakso' },
 ];
 
 /**
@@ -42,5 +43,20 @@ export type StructuralTag = (typeof STRUCTURAL_TAGS)[number];
 
 /** Entries carrying this tag render as short-form notes rather than full articles. */
 export const NOTE_TAG: StructuralTag = 'note';
+
+/**
+ * Projects are not all software. `kind` selects the vocabulary a project page uses,
+ * so an instrument build does not get a "Built with" heading over a list of woods.
+ */
+export const PROJECT_KINDS = ['software', 'music', 'instrument', 'writing', 'other'] as const;
+export type ProjectKind = (typeof PROJECT_KINDS)[number];
+
+export const PROJECT_KIND_LABELS: Record<ProjectKind, { label: string; madeWith: string }> = {
+	software: { label: 'Software', madeWith: 'Built with' },
+	music: { label: 'Music', madeWith: 'Made with' },
+	instrument: { label: 'Instrument', madeWith: 'Materials and tools' },
+	writing: { label: 'Writing', madeWith: 'Written with' },
+	other: { label: 'Other', madeWith: 'Made with' },
+};
 
 export const POSTS_PER_PAGE = 10;
