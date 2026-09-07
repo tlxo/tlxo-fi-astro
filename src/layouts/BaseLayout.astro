@@ -7,14 +7,14 @@ import '../styles/global.css';
 
 interface Props {
 	title: string;
-	description?: string;
-	image?: string;
-	type?: 'website' | 'article';
-	publishedDate?: Date;
-	updatedDate?: Date;
-	tags?: readonly string[];
-	noindex?: boolean;
-	wide?: boolean;
+	description?: string | undefined;
+	image?: string | undefined;
+	type?: 'website' | 'article' | undefined;
+	publishedDate?: Date | undefined;
+	updatedDate?: Date | undefined;
+	tags?: readonly string[] | undefined;
+	noindex?: boolean | undefined;
+	wide?: boolean | undefined;
 }
 
 const { wide = false, ...seo } = Astro.props;

@@ -1,0 +1,45 @@
+---
+/* Vanilla rather than a React island: this sits in the header on every page, and
+   shipping the React runtime site-wide for one button is not worth it. */
+---
+
+<button type="button" class="theme-toggle" aria-pressed="false" title="Switch theme">
+	<span aria-hidden="true" data-theme-icon>☾</span>
+	<span class="visually-hidden" data-theme-label>Switch theme</span>
+</button>
+
+<script>
+	// Astro hoists this into a module, where document.currentScript is null.
+	const button = document.querySelector<HTMLButtonElement>('.theme-toggle');
+
+	function isLightActive(): boolean {
+		const stored = document.documentElement.dataset['theme'];
+		if (stored === 'light') return true;
+		if (stored === 'dark') return false;
+		return window.matchMedia('(prefers-color-scheme: light)').matches;
+	}
+
+	function apply(button: HTMLButtonElement) {
+		const isLight = isLightActive();
+		const next = isLight ? 'dark' : 'light';
+
+		button.setAttribute('aria-pressed', String(isLight));
+		button.title = `Switch to ${next} theme`;
+
+		const icon = button.querySelector('[data-theme-icon]');
+		if (icon) icon.textContent = isLight ? '☀' : '☾';
+
+		const label = button.querySelector('[data-theme-label]');
+		if (label) label.textContent = `Switch to ${next} theme`;
+	}
+
+	if (button) {
+		apply(button);
+		button.addEventListener('click', () => {
+			const next = isLightActive() ? 'dark' : 'light';
+			document.documentElement.dataset['theme'] = next;
+			localStorage.setItem('theme', next);
+			apply(button);
+		});
+	}
+</script>

@@ -1,11 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Search from '../components/react/Search.tsx';
 ---
 
-<BaseLayout title="Search" description="Search everything published on this site.">
+<BaseLayout title="Search" description="Search everything published on this site." noindex>
 	<h1>Search</h1>
-	<p>
-		Full-text search is coming. In the meantime, browse <a href="/blog/">all posts</a> or narrow things
-		down <a href="/tags/">by tag</a>.
-	</p>
+
+	<Search client:visible />
+
+	<noscript>
+		<p>
+			Search needs JavaScript. Without it, browse <a href="/blog/">all posts</a> or narrow things down
+			<a href="/tags/">by tag</a>.
+		</p>
+	</noscript>
 </BaseLayout>

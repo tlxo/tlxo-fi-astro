@@ -1,4 +1,5 @@
 @import 'modern-normalize/modern-normalize.css';
+@import '@fontsource-variable/lexend-deca/index.css';
 @import './tokens.css';
 
 *,
@@ -176,6 +177,38 @@ figcaption {
 	border: 0;
 }
 
+/* Long-form Markdown output. Spacing is looser than the UI defaults. */
+.prose > * + * {
+	margin-top: var(--space-sm);
+}
+
+.prose h2,
+.prose h3 {
+	margin-top: var(--space-lg);
+}
+
+.prose h2 + *,
+.prose h3 + * {
+	margin-top: var(--space-2xs);
+}
+
+.prose ul,
+.prose ol {
+	padding-left: var(--space-md);
+}
+
+.prose li + li {
+	margin-top: var(--space-3xs);
+}
+
+.prose img {
+	border-radius: var(--radius-md);
+}
+
+.prose a {
+	text-decoration: underline;
+}
+
 .skip-link {
 	position: absolute;
 	left: var(--space-sm);
@@ -202,4 +235,113 @@ figcaption {
 		transition-duration: 0.01ms !important;
 		scroll-behavior: auto !important;
 	}
+}
+
+/* React islands cannot use Astro's scoped styles, so they live here. */
+
+.theme-toggle {
+	background: none;
+	border: var(--border-thin);
+	border-radius: var(--radius-sm);
+	color: var(--color-text);
+	cursor: pointer;
+	font-size: var(--text-base);
+	line-height: 1;
+	padding: var(--space-3xs) var(--space-2xs);
+}
+
+.theme-toggle:hover {
+	color: var(--color-link-hover);
+	border-color: var(--color-link-hover);
+}
+
+.tag-filter {
+	margin-bottom: var(--space-lg);
+	padding-bottom: var(--space-sm);
+	border-bottom: var(--border-thin);
+}
+
+.tag-filter > p {
+	font-size: var(--text-sm);
+	color: var(--color-text-muted);
+	margin-bottom: var(--space-2xs);
+}
+
+.tag-filter ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2xs);
+	list-style: none;
+	margin: 0 0 var(--space-2xs);
+	padding: 0;
+}
+
+.tag-filter button {
+	background: none;
+	border: var(--border-thin);
+	border-radius: var(--radius-sm);
+	color: var(--color-link);
+	cursor: pointer;
+	font-size: var(--text-sm);
+	padding: var(--space-3xs) var(--space-2xs);
+}
+
+.tag-filter button[aria-pressed='true'] {
+	background-color: var(--color-accent);
+	border-color: var(--color-accent);
+	color: var(--color-bg);
+}
+
+.tag-filter__count {
+	margin: 0;
+}
+
+.search label {
+	display: block;
+	margin-bottom: var(--space-2xs);
+	font-weight: 600;
+}
+
+.search input {
+	width: 100%;
+	padding: var(--space-2xs) var(--space-xs);
+	font: inherit;
+	color: var(--color-text);
+	background-color: var(--color-surface);
+	border: var(--border-thin);
+	border-radius: var(--radius-sm);
+}
+
+.search__status {
+	font-size: var(--text-sm);
+	color: var(--color-text-muted);
+	margin-block: var(--space-2xs) var(--space-md);
+}
+
+.search__results {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	gap: var(--space-md);
+}
+
+.search__results a {
+	font-size: var(--text-lg);
+	text-decoration: none;
+}
+
+.search__results a:hover,
+.search__results a:focus-visible {
+	text-decoration: underline;
+}
+
+.search__results p {
+	margin: var(--space-3xs) 0 0;
+	color: var(--color-text-muted);
+}
+
+.search__results mark {
+	background-color: var(--color-accent-soft);
+	color: var(--color-bg);
 }
