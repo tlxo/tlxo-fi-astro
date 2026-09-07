@@ -1,21 +1,21 @@
 /** Single source of truth for site metadata. Imported by SEO, feeds and nav. */
 
 export const SITE = {
-	title: 'TLXO Creative Services',
+	title: 'Toni Laakso / tlxo',
 	/** Used as the fallback <meta name="description"> and in the RSS feed. */
-	description: 'Inclusive digital products and services.',
-	tagline: 'Inclusive digital products and services.',
+	description: 'Writing about accessible, inclusive digital products — and things I make for fun.',
+	tagline: 'Accessible, inclusive digital products — and things I make for fun.',
 	url: 'https://tlxo.fi',
 	locale: 'en',
 	/** BCP 47 tag for <html lang>. */
 	lang: 'en',
-	email: 'hello@tlxo.fi',
+	email: 'toni@lxo.fi',
 	defaultOgImage: '/images/og-default.png',
 } as const;
 
 export const AUTHOR = {
 	id: 'toni',
-	name: 'Toni',
+	name: 'Toni Laakso',
 	url: 'https://tlxo.fi',
 } as const;
 
