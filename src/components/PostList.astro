@@ -4,10 +4,11 @@ import type { Post } from '../lib/content';
 
 interface Props {
 	posts: Post[];
-	emptyMessage?: string;
+	emptyMessage?: string | undefined;
+	headingLevel?: 'h2' | 'h3' | undefined;
 }
 
-const { posts, emptyMessage = 'Nothing here yet.' } = Astro.props;
+const { posts, emptyMessage = 'Nothing here yet.', headingLevel = 'h2' } = Astro.props;
 ---
 
 {
@@ -17,7 +18,7 @@ const { posts, emptyMessage = 'Nothing here yet.' } = Astro.props;
 		<ul class="post-list">
 			{posts.map((post) => (
 				<li data-post-tags={post.data.tags.join(' ')}>
-					<PostCard post={post} />
+					<PostCard post={post} headingLevel={headingLevel} />
 				</li>
 			))}
 		</ul>
