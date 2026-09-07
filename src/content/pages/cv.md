@@ -9,7 +9,7 @@ order: 1
 Software Generalist / Accessibility Specialist (IAAP CPWA)  
 Finnish (native) · Swedish & English (full professional)  
 [toni@lxo.fi](mailto:toni@lxo.fi) · +358 50 564 1640 • Tampere, Finland  
-[github.com/tlxo](https://github.com/tlxo) • [linkedin.com/in/tonilaakso](https:/linkedin.com/in/tonilaakso)
+[github.com/tlxo](https://github.com/tlxo) • [linkedin.com/in/tonilaakso](https://linkedin.com/in/tonilaakso)
 
 ## Summary
 
