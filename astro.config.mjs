@@ -1,11 +1,13 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
 	// Required for canonical URLs, RSS and the sitemap.
 	site: 'https://tlxo.fi',
 	trailingSlash: 'always',
+	integrations: [mdx()],
 	build: {
 		format: 'directory',
 	},
