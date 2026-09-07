@@ -10,15 +10,8 @@ const featured = await getFeaturedProjects();
 
 <BaseLayout title={SITE.title} description={SITE.description}>
 	<section class="intro">
-		<img src="/images/icon.svg" alt="" width="72" height="72" />
 		<h1>{SITE.title}</h1>
 		<p class="intro__tagline">{SITE.tagline}</p>
-		<p>
-			I build digital products that work for the people who usually get designed around rather than
-			designed for. <a href="/about/">More about that</a>, or get in touch at <a
-				href={`mailto:${SITE.email}`}>{SITE.email}</a
-			>.
-		</p>
 	</section>
 
 	<section aria-labelledby="latest-heading">
