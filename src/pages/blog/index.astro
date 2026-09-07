@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostList from '../../components/PostList.astro';
 import Pagination from '../../components/Pagination.astro';
 import TagFilter from '../../components/react/TagFilter.tsx';
-import { getPublishedPosts, getAllTags } from '../../lib/content';
+import { getPublishedPosts } from '../../lib/content';
 import { POSTS_PER_PAGE } from '../../consts';
 
 const posts = await getPublishedPosts();
@@ -11,10 +11,15 @@ const totalPages = Math.max(1, Math.ceil(posts.length / POSTS_PER_PAGE));
 const pagePosts = posts.slice(0, POSTS_PER_PAGE);
 
 // Only tags present on this page can be filtered without a round-trip.
-const pageTags = await getAllTags();
-const visibleTags = pageTags.filter(({ tag }) =>
-	pagePosts.some((post) => post.data.tags.includes(tag)),
-);
+const counts = new Map<string, number>();
+for (const post of pagePosts) {
+	for (const tag of post.data.tags) {
+		counts.set(tag, (counts.get(tag) ?? 0) + 1);
+	}
+}
+const visibleTags = [...counts.entries()]
+	.map(([tag, count]) => ({ tag, count }))
+	.sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag));
 ---
 
 <BaseLayout
