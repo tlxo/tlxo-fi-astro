@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostList from '../components/PostList.astro';
+import { getPublishedPosts, getFeaturedProjects } from '../lib/content';
+import { SITE } from '../consts';
+
+const latest = (await getPublishedPosts()).slice(0, 5);
+const featured = await getFeaturedProjects();
+---
+
+<BaseLayout title={SITE.title} description={SITE.description}>
+	<section class="intro">
+		<img src="/images/tlxo-cs-logo.svg" alt="" width="72" height="72" />
+		<h1>{SITE.title}</h1>
+		<p class="intro__tagline">{SITE.tagline}</p>
+		<p>
+			I build digital products that work for the people who usually get designed around rather than
+			designed for. <a href="/about/">More about that</a>, or get in touch at
+			<a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+		</p>
+	</section>
+
+	<section aria-labelledby="latest-heading">
+		<h2 id="latest-heading">Latest writing</h2>
+		<PostList posts={latest} emptyMessage="Nothing published yet — soon." />
+		<p><a href="/blog/">All posts &rarr;</a></p>
+	</section>
+
+	{
+		featured.length > 0 && (
+			<section aria-labelledby="projects-heading">
+				<h2 id="projects-heading">Selected projects</h2>
+				<ul class="featured">
+					{featured.map((project) => (
+						<li>
+							<h3>
+								<a href={`/projects/${project.id}/`}>{project.data.title}</a>
+							</h3>
+							<p>{project.data.summary}</p>
+						</li>
+					))}
+				</ul>
+				<p>
+					<a href="/projects/">All projects &rarr;</a>
+				</p>
+			</section>
+		)
+	}
+</BaseLayout>
+
+<style>
+	.intro {
+		margin-bottom: var(--space-xl);
+	}
+
+	.intro__tagline {
+		font-size: var(--text-lg);
+		color: var(--color-text-muted);
+	}
+
+	section + section {
+		margin-top: var(--space-xl);
+	}
+
+	.featured {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		gap: var(--space-md);
+	}
+
+	.featured h3 {
+		font-size: var(--text-lg);
+		margin-bottom: var(--space-3xs);
+	}
+</style>

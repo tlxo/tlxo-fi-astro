@@ -1,0 +1,35 @@
+---
+import PostCard from './PostCard.astro';
+import type { Post } from '../lib/content';
+
+interface Props {
+	posts: Post[];
+	emptyMessage?: string;
+}
+
+const { posts, emptyMessage = 'Nothing here yet.' } = Astro.props;
+---
+
+{
+	posts.length === 0 ? (
+		<p>{emptyMessage}</p>
+	) : (
+		<ul class="post-list">
+			{posts.map((post) => (
+				<li>
+					<PostCard post={post} />
+				</li>
+			))}
+		</ul>
+	)
+}
+
+<style>
+	.post-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		gap: var(--space-lg);
+	}
+</style>

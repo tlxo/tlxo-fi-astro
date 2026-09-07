@@ -1,0 +1,55 @@
+---
+interface Props {
+	currentPage: number;
+	totalPages: number;
+}
+
+const { currentPage, totalPages } = Astro.props;
+
+/** Page 1 lives at /blog/, subsequent pages at /blog/page/N/. */
+const hrefFor = (page: number): string => (page === 1 ? '/blog/' : `/blog/page/${page}/`);
+---
+
+{
+	totalPages > 1 && (
+		<nav class="pagination" aria-label="Pagination">
+			{currentPage > 1 ? (
+				<a href={hrefFor(currentPage - 1)} rel="prev">
+					&larr; Newer
+				</a>
+			) : (
+				<span />
+			)}
+
+			<p aria-current="page">
+				Page {currentPage} of {totalPages}
+			</p>
+
+			{currentPage < totalPages ? (
+				<a href={hrefFor(currentPage + 1)} rel="next">
+					Older &rarr;
+				</a>
+			) : (
+				<span />
+			)}
+		</nav>
+	)
+}
+
+<style>
+	.pagination {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--space-sm);
+		margin-top: var(--space-xl);
+		padding-top: var(--space-md);
+		border-top: var(--border-thin);
+	}
+
+	.pagination p {
+		margin: 0;
+		font-size: var(--text-sm);
+		color: var(--color-text-muted);
+	}
+</style>

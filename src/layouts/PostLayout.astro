@@ -1,0 +1,172 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from './BaseLayout.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import TagList from '../components/TagList.astro';
+import PostCard from '../components/PostCard.astro';
+import { AUTHOR } from '../consts';
+import { isNote, type Post } from '../lib/content';
+
+interface Props {
+	post: Post;
+	related: Post[];
+	newer?: Post | undefined;
+	older?: Post | undefined;
+	authorName?: string | undefined;
+}
+
+const { post, related, newer, older, authorName } = Astro.props;
+const { title, description, pubDate, updatedDate, tags, heroImage, heroAlt, link } = post.data;
+const note = isNote(post);
+---
+
+<BaseLayout
+	title={title}
+	description={description}
+	type="article"
+	publishedDate={pubDate}
+	updatedDate={updatedDate}
+	tags={tags}
+>
+	<article class="post">
+		<header class="post__header">
+			<p class="post__meta">
+				<FormattedDate date={pubDate} />
+				{updatedDate && <FormattedDate date={updatedDate} prefix="· updated" />}
+				<span>· {authorName ?? AUTHOR.name}</span>
+				{note && <span class="post__badge">Note</span>}
+			</p>
+
+			<h1>{title}</h1>
+
+			{
+				link && (
+					<p class="post__link">
+						<a href={link} rel="noopener noreferrer external">
+							{new URL(link).hostname.replace(/^www\./, '')} &rarr;
+						</a>
+					</p>
+				)
+			}
+
+			<TagList tags={tags} />
+		</header>
+
+		{
+			heroImage && (
+				<Image src={heroImage} alt={heroAlt ?? ''} class="post__hero" widths={[480, 800, 1200]} />
+			)
+		}
+
+		<div class="prose">
+			<slot />
+		</div>
+	</article>
+
+	{
+		(newer || older) && (
+			<nav class="post__adjacent" aria-label="More posts">
+				{older && (
+					<a href={`/blog/${older.id}/`} rel="prev">
+						<span>Older</span>
+						{older.data.title}
+					</a>
+				)}
+				{newer && (
+					<a href={`/blog/${newer.id}/`} rel="next" class="post__adjacent--next">
+						<span>Newer</span>
+						{newer.data.title}
+					</a>
+				)}
+			</nav>
+		)
+	}
+
+	{
+		related.length > 0 && (
+			<section class="post__related" aria-labelledby="related-heading">
+				<h2 id="related-heading">Related</h2>
+				<ul>
+					{related.map((entry) => (
+						<li>
+							<PostCard post={entry} headingLevel="h3" />
+						</li>
+					))}
+				</ul>
+			</section>
+		)
+	}
+</BaseLayout>
+
+<style>
+	.post__header {
+		margin-bottom: var(--space-md);
+	}
+
+	.post__meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-2xs);
+		font-size: var(--text-sm);
+		color: var(--color-text-muted);
+		margin-bottom: var(--space-2xs);
+	}
+
+	.post__badge {
+		border: var(--border-thin);
+		border-radius: var(--radius-sm);
+		padding: 0 var(--space-3xs);
+		color: var(--color-accent-soft);
+	}
+
+	.post__link {
+		margin-bottom: var(--space-2xs);
+		font-size: var(--text-sm);
+	}
+
+	.post__hero {
+		width: 100%;
+		border-radius: var(--radius-md);
+		margin-bottom: var(--space-md);
+	}
+
+	.post__adjacent {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		gap: var(--space-sm);
+		margin-top: var(--space-xl);
+		padding-top: var(--space-md);
+		border-top: var(--border-thin);
+	}
+
+	.post__adjacent a {
+		display: flex;
+		flex-direction: column;
+		max-width: 20rem;
+		text-decoration: none;
+	}
+
+	.post__adjacent--next {
+		text-align: right;
+		margin-left: auto;
+	}
+
+	.post__adjacent span {
+		font-size: var(--text-xs);
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: var(--color-text-muted);
+	}
+
+	.post__related {
+		margin-top: var(--space-xl);
+	}
+
+	.post__related ul {
+		list-style: none;
+		padding: 0;
+		display: grid;
+		gap: var(--space-md);
+	}
+</style>

@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getPublishedProjects } from '../../lib/content';
+
+const projects = await getPublishedProjects();
+---
+
+<BaseLayout title="Projects" description="Selected work and side projects.">
+	<h1>Projects</h1>
+	<p>Client work and things built for their own sake.</p>
+
+	{
+		projects.length === 0 ? (
+			<p>No projects listed yet.</p>
+		) : (
+			<ul class="project-list">
+				{projects.map((project) => (
+					<li>
+						<article>
+							<p class="project-list__year">{project.data.year}</p>
+							<h2>
+								<a href={`/projects/${project.id}/`}>{project.data.title}</a>
+							</h2>
+							<p>{project.data.summary}</p>
+							{project.data.tech.length > 0 && (
+								<p class="project-list__tech">{project.data.tech.join(' · ')}</p>
+							)}
+						</article>
+					</li>
+				))}
+			</ul>
+		)
+	}
+</BaseLayout>
+
+<style>
+	.project-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		gap: var(--space-lg);
+	}
+
+	.project-list h2 {
+		font-size: var(--text-lg);
+		margin-bottom: var(--space-3xs);
+	}
+
+	.project-list h2 a {
+		text-decoration: none;
+	}
+
+	.project-list h2 a:hover,
+	.project-list h2 a:focus-visible {
+		text-decoration: underline;
+	}
+
+	.project-list__year,
+	.project-list__tech {
+		font-size: var(--text-sm);
+		color: var(--color-text-muted);
+		margin-bottom: var(--space-3xs);
+	}
+</style>

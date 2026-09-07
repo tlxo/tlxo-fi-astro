@@ -1,0 +1,40 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+	title: string;
+	description: string;
+	updatedDate?: Date;
+}
+
+const { title, description, updatedDate } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+	<article class="prose">
+		<h1>{title}</h1>
+		<slot />
+		{
+			updatedDate && (
+				<p class="page-updated">
+					Last updated{' '}
+					<time datetime={updatedDate.toISOString()}>
+						{updatedDate.toLocaleDateString('en-GB', {
+							year: 'numeric',
+							month: 'long',
+							day: 'numeric',
+						})}
+					</time>
+				</p>
+			)
+		}
+	</article>
+</BaseLayout>
+
+<style>
+	.page-updated {
+		margin-top: var(--space-lg);
+		font-size: var(--text-sm);
+		color: var(--color-text-muted);
+	}
+</style>
