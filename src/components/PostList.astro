@@ -16,7 +16,7 @@ const { posts, emptyMessage = 'Nothing here yet.' } = Astro.props;
 	) : (
 		<ul class="post-list">
 			{posts.map((post) => (
-				<li>
+				<li data-post-tags={post.data.tags.join(' ')}>
 					<PostCard post={post} />
 				</li>
 			))}

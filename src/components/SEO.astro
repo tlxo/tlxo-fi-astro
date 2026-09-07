@@ -3,14 +3,14 @@ import { SITE } from '../consts';
 
 interface Props {
 	title: string;
-	description?: string;
+	description?: string | undefined;
 	/** Absolute or root-relative path; resolved against the site origin. */
-	image?: string;
-	type?: 'website' | 'article';
-	publishedDate?: Date;
-	updatedDate?: Date;
-	tags?: readonly string[];
-	noindex?: boolean;
+	image?: string | undefined;
+	type?: 'website' | 'article' | undefined;
+	publishedDate?: Date | undefined;
+	updatedDate?: Date | undefined;
+	tags?: readonly string[] | undefined;
+	noindex?: boolean | undefined;
 }
 
 const {
@@ -78,9 +78,5 @@ const schema = isHome
 <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
 <link rel="webmention" href="https://webmention.io/tlxo.fi/webmention" />
 <link rel="alternate" type="application/rss+xml" title={`${SITE.title} — Blog`} href="/rss.xml" />
-
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet" />
 
 <script is:inline set:html={JSON.stringify(schema)} type="application/ld+json" />

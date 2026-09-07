@@ -1,5 +1,6 @@
 ---
 import { NAV, SITE } from '../consts';
+import ThemeToggle from './ThemeToggle.astro';
 
 const current = Astro.url.pathname;
 const isActive = (href: string): boolean => current === href || current.startsWith(href);
@@ -23,6 +24,7 @@ const isActive = (href: string): boolean => current === href || current.startsWi
 						</li>
 					))
 				}
+				<li><ThemeToggle /></li>
 			</ul>
 		</nav>
 	</div>

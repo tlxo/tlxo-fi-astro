@@ -22,7 +22,8 @@
 	--color-selection-text: #020222;
 
 	--font-sans:
-		'Lexend Deca', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', roboto, sans-serif;
+		'Lexend Deca Variable', 'Lexend Deca', ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
+		roboto, sans-serif;
 	--font-mono: ui-monospace, sfmono-regular, 'SF Mono', menlo, consolas, monospace;
 
 	/* Fluid type scale, ~1.25 ratio at both ends. */

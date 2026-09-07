@@ -23,6 +23,7 @@ export const NAV: ReadonlyArray<{ label: string; href: string }> = [
 	{ label: 'Blog', href: '/blog/' },
 	{ label: 'Projects', href: '/projects/' },
 	{ label: 'About', href: '/about/' },
+	{ label: 'Search', href: '/search/' },
 ];
 
 /** rel="me" links for IndieWeb identity verification. */
