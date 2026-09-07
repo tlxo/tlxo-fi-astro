@@ -1,5 +1,6 @@
 @import 'modern-normalize/modern-normalize.css';
-@import '@fontsource-variable/lexend-deca/index.css';
+@import '@fontsource-variable/atkinson-hyperlegible-next/index.css';
+@import '@fontsource-variable/atkinson-hyperlegible-mono/index.css';
 @import './tokens.css';
 
 *,

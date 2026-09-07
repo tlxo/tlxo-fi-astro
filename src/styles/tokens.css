@@ -22,9 +22,11 @@
 	--color-selection-text: #020222;
 
 	--font-sans:
-		'Lexend Deca Variable', 'Lexend Deca', ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
-		roboto, sans-serif;
-	--font-mono: ui-monospace, sfmono-regular, 'SF Mono', menlo, consolas, monospace;
+		'Atkinson Hyperlegible Next Variable', 'Atkinson Hyperlegible Next', ui-sans-serif, system-ui,
+		-apple-system, 'Segoe UI', roboto, sans-serif;
+	--font-mono:
+		'Atkinson Hyperlegible Mono Variable', 'Atkinson Hyperlegible Mono', ui-monospace, sfmono-regular,
+		'SF Mono', menlo, consolas, monospace;
 
 	/* Fluid type scale, ~1.25 ratio at both ends. */
 	--text-xs: clamp(0.75rem, 0.73rem + 0.1vw, 0.8rem);
