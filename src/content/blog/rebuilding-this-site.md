@@ -1,5 +1,5 @@
 ---
-title: 'Rebuilding this site, like it was both 2005 and 2025'
+title: 'Rebuilding this site, like it was both 2006 and 2026'
 description: 'Notes on moving tlxo.fi from a single hand-written page to something that can hold a blog, without giving up the plain-Markdown workflow.'
 pubDate: 2026-09-07
 tags: ['personal', 'meta', 'astro']
@@ -23,9 +23,9 @@ Everything else was negotiable. That rule was not.
 
 It ruled out most things, pleasantly. No CMS to host. No comments system. No server to keep
 patched. What is left is a static site generator, a git repository, and a build hook, which
-is roughly the 2005 version of a personal website with thirty years of better tooling
+is roughly the 2006 version of a personal website with thirty years of improved tooling
 underneath it.
 
-The parts I did want from 2025: typed content, so a malformed post fails the build instead
+The parts I did want from 2026: typed content, so a malformed post fails the build instead
 of rendering wrong; real accessibility rather than a plugin; and fast pages that do not ship
 a framework to render text.
