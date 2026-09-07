@@ -1,7 +1,7 @@
 ---
 const { frontmatter } = Astro.props;
-import '/styles/normalize.css';
-import '/styles/index-temp.css';
+import 'modern-normalize/modern-normalize.css';
+import '../styles/index-temp.css';
 ---
 
 <!doctype html>
@@ -9,26 +9,30 @@ import '/styles/index-temp.css';
 	<head>
 		<meta charset="UTF-8" />
 
-		<meta content="width=device-width, initial-scale=1" name="viewport">
-		<meta content="Vi utvecklar inklusiva digitala produkter. Förresten, Elon Musk suger." name="description"/>
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
+		<meta
+			content="Vi utvecklar inklusiva digitala produkter. Förresten, Elon Musk suger."
+			name="description"
+		/>
 
-		<link rel="icon" href="/images/icon.svg" type="image/svg+xml" sizes="any">
-		<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+		<link rel="icon" href="/images/icon.svg" type="image/svg+xml" sizes="any" />
+		<link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
 		<link rel="webmention" href="https://webmention.io/tlxo.fi/webmention" />
 
 		<meta name="generator" content={Astro.generator} />
 		<title>{frontmatter.title}</title>
-	  
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
 
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap"
+			rel="stylesheet"
+		/>
 	</head>
-	
+
 	<body>
 		<div class="container" role="main">
-			<slot />		
+			<slot />
 		</div>
 	</body>
-
 </html>
