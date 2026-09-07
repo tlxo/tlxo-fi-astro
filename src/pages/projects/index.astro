@@ -1,13 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getPublishedProjects } from '../../lib/content';
+import { PROJECT_KIND_LABELS } from '../../consts';
 
 const projects = await getPublishedProjects();
 ---
 
 <BaseLayout title="Projects" description="Selected work and side projects.">
 	<h1>Projects</h1>
-	<p>Client work and things built for their own sake.</p>
+	<p>Things I have built, recorded, made or written.</p>
 
 	{
 		projects.length === 0 ? (
@@ -17,13 +18,15 @@ const projects = await getPublishedProjects();
 				{projects.map((project) => (
 					<li>
 						<article>
-							<p class="project-list__year">{project.data.year}</p>
+							<p class="project-list__meta">
+								{project.data.year} · {PROJECT_KIND_LABELS[project.data.kind].label}
+							</p>
 							<h2>
 								<a href={`/projects/${project.id}/`}>{project.data.title}</a>
 							</h2>
 							<p>{project.data.summary}</p>
-							{project.data.tech.length > 0 && (
-								<p class="project-list__tech">{project.data.tech.join(' · ')}</p>
+							{project.data.madeWith.length > 0 && (
+								<p class="project-list__meta">{project.data.madeWith.join(' · ')}</p>
 							)}
 						</article>
 					</li>
@@ -56,8 +59,7 @@ const projects = await getPublishedProjects();
 		text-decoration: underline;
 	}
 
-	.project-list__year,
-	.project-list__tech {
+	.project-list__meta {
 		font-size: var(--text-sm);
 		color: var(--color-text-muted);
 		margin-bottom: var(--space-3xs);

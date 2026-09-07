@@ -1,5 +1,6 @@
 import { defineCollection, reference, z } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { PROJECT_KINDS } from './consts';
 
 /**
  * Tags carry all the structural weight on this site (notes, work vs. personal,
@@ -43,11 +44,12 @@ const projects = defineCollection({
 			.object({
 				title: z.string().min(1),
 				summary: z.string().min(1),
+				kind: z.enum(PROJECT_KINDS),
 				role: z.string().optional(),
-				year: z.number().int().min(2000).max(2100),
-				tech: z.array(z.string()).default([]),
-				url: z.string().url().optional(),
-				repo: z.string().url().optional(),
+				year: z.number().int().min(1900).max(2100),
+				/** Stack, instruments, timbers, whatever the project was made from. */
+				madeWith: z.array(z.string()).default([]),
+				links: z.array(z.object({ label: z.string().min(1), url: z.string().url() })).default([]),
 				featured: z.boolean().default(false),
 				draft: z.boolean().default(false),
 				cover: image().optional(),

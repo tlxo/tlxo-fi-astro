@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getPublishedProjects } from '../../lib/content';
+import { PROJECT_KIND_LABELS } from '../../consts';
 
 export async function getStaticPaths() {
 	const projects = await getPublishedProjects();
@@ -11,12 +12,13 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { Content } = await render(project);
-const { title, summary, role, year, tech, url, repo, cover, coverAlt } = project.data;
+const { title, summary, role, year, kind, madeWith, links, cover, coverAlt } = project.data;
+const vocabulary = PROJECT_KIND_LABELS[kind];
 ---
 
 <BaseLayout title={title} description={summary}>
 	<article data-pagefind-body>
-		<p class="project__year">{year}{role && ` · ${role}`}</p>
+		<p class="project__year">{year} · {vocabulary.label}{role && ` · ${role}`}</p>
 		<h1>{title}</h1>
 
 		{cover && <Image src={cover} alt={coverAlt ?? ''} class="project__cover" widths={[480, 800]} />}
@@ -26,31 +28,24 @@ const { title, summary, role, year, tech, url, repo, cover, coverAlt } = project
 		</div>
 
 		{
-			tech.length > 0 && (
+			madeWith.length > 0 && (
 				<>
-					<h2>Built with</h2>
-					<p>{tech.join(' · ')}</p>
+					<h2>{vocabulary.madeWith}</h2>
+					<p>{madeWith.join(' · ')}</p>
 				</>
 			)
 		}
 
 		{
-			(url || repo) && (
+			links.length > 0 && (
 				<ul class="project__links">
-					{url && (
+					{links.map((link) => (
 						<li>
-							<a href={url} rel="noopener noreferrer external">
-								Visit site
+							<a href={link.url} rel="noopener noreferrer external">
+								{link.label}
 							</a>
 						</li>
-					)}
-					{repo && (
-						<li>
-							<a href={repo} rel="noopener noreferrer external">
-								Source code
-							</a>
-						</li>
-					)}
+					))}
 				</ul>
 			)
 		}

@@ -1,11 +1,15 @@
 ---
 title: 'tlxo.fi'
 summary: 'This site. A static Astro build with typed content collections, deployed from a Markdown-only authoring workflow.'
+kind: software
 role: 'Design and development'
 year: 2026
-tech: ['Astro', 'TypeScript', 'React', 'Netlify']
-url: 'https://tlxo.fi'
-repo: 'https://github.com/tlxo/tlxo-fi-astro'
+madeWith: ['Astro', 'TypeScript', 'React', 'Netlify']
+links:
+  - label: 'Visit site'
+    url: 'https://tlxo.fi'
+  - label: 'Source code'
+    url: 'https://github.com/tlxo/tlxo-fi-astro'
 featured: true
 ---
 
