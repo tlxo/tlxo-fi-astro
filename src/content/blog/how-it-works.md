@@ -6,4 +6,6 @@ tags: ['note', 'design']
 author: toni
 ---
 
-“Most people make the mistake of thinking design is what it looks like… Design is not just what it looks like and feels like. Design is how it works.” –[Steve Jobs, The New York Times, 2003](https://www.nytimes.com/2003/11/30/magazine/the-guts-of-a-new-machine.html)
+> Most people make the mistake of thinking design is what it looks like… Design is not just what it looks like and feels like. Design is how it works.
+
+&mdash; [Steve Jobs, The New York Times, 2003](https://www.nytimes.com/2003/11/30/magazine/the-guts-of-a-new-machine.html)
