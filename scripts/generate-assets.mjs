@@ -11,15 +11,24 @@ const BG = '#020222';
 const TEXT = '#dce6f2';
 const ACCENT = '#d377b3';
 
-// icon.svg is the blue mark; the tlxo wordmark is black ink and vanishes on the dark background.
+// The wordmark is embedded so the OG card remains a single generated PNG.
 const logo = await readFile(new URL('../public/images/icon.svg', import.meta.url));
+const wordmark = (await readFile(new URL('../public/images/tlxo-logo.svg', import.meta.url)))
+	.toString()
+	.replaceAll('#101033', TEXT)
+	.replaceAll('#ffffff', TEXT);
+const wordmarkDataUri = `data:image/svg+xml;base64,${Buffer.from(wordmark).toString('base64')}`;
 
 const ogSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <rect width="1200" height="630" fill="${BG}"/>
   <rect x="0" y="0" width="1200" height="10" fill="${ACCENT}"/>
-  <text x="80" y="300" font-family="Helvetica, Arial, sans-serif" font-size="76" font-weight="600" fill="${TEXT}">Toni Laakso / tlxo</text>
-  <text x="80" y="380" font-family="Helvetica, Arial, sans-serif" font-size="38" fill="${ACCENT}">Accessible, inclusive digital products.</text>
-  <text x="80" y="560" font-family="Helvetica, Arial, sans-serif" font-size="32" fill="${TEXT}" opacity="0.7">tlxo.fi</text>
+	<rect x="80" y="96" width="72" height="8" fill="#7fb2dd"/>
+	<text x="80" y="154" font-family="Helvetica, Arial, sans-serif" font-size="28" letter-spacing="2" fill="#7fb2dd">TONI LAAKSO</text>
+	<image href="${wordmarkDataUri}" x="80" y="194" width="420" height="161" preserveAspectRatio="xMinYMid meet"/>
+	<text x="80" y="435" font-family="Helvetica, Arial, sans-serif" font-size="38" fill="${ACCENT}">Welcome to the winter</text>
+	<text x="80" y="481" font-family="Helvetica, Arial, sans-serif" font-size="38" fill="${ACCENT}">of my discontent.</text>
+	<rect x="80" y="528" width="104" height="2" fill="#7fb2dd" opacity="0.8"/>
+	<text x="80" y="570" font-family="Helvetica, Arial, sans-serif" font-size="32" fill="${TEXT}" opacity="0.7">tlxo.fi</text>
 </svg>`;
 
 await sharp(Buffer.from(ogSvg)).png().toFile(new URL('og-default.png', OUT).pathname);
