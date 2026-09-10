@@ -2,6 +2,8 @@ import { defineCollection, reference, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { PROJECT_KINDS } from './consts';
 
+/** Each collection folder has an annotated `_template` entry (draft: true) to copy for new content. */
+
 /**
  * Tags carry all the structural weight on this site (notes, work vs. personal,
  * topics), so casing and spacing drift would silently create orphan tag pages.

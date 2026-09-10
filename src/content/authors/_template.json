@@ -1,0 +1,5 @@
+{
+	"_instructions": "Duplicate this file, rename it to the author's id (used by blog posts' `author` field), and fill in name/url below. This key is not part of the schema and is stripped automatically — safe to leave in or delete.",
+	"name": "Author Name",
+	"url": "https://example.com"
+}
