@@ -1,16 +1,22 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PostList from '../components/PostList.astro';
+import TlxoLogo from '../components/TlxoLogo.astro';
 import { getPublishedPosts, getFeaturedProjects } from '../lib/content';
 import { SITE } from '../consts';
 
 const latest = (await getPublishedPosts()).slice(0, 5);
 const featured = await getFeaturedProjects();
+const logoText = 'tlxo';
+const titlePrefix = SITE.title.replace(logoText, '').trimEnd();
 ---
 
 <BaseLayout title={SITE.title} description={SITE.description}>
 	<section class="intro">
-		<h1>{SITE.title}</h1>
+		<h1 class="intro__title">
+			<span>{titlePrefix}</span>
+			<TlxoLogo class="intro__logo" label={logoText} />
+		</h1>
 		<p class="intro__tagline">{SITE.tagline}</p>
 	</section>
 
@@ -45,6 +51,13 @@ const featured = await getFeaturedProjects();
 <style>
 	.intro {
 		margin-bottom: var(--space-xl);
+	}
+
+	.intro__title {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5em;
 	}
 
 	.intro__tagline {

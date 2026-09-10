@@ -1,0 +1,26 @@
+---
+interface Props {
+	class?: string;
+	height?: string;
+	label?: string;
+}
+
+const className = Astro.props.class;
+const height = Astro.props.height ?? '0.9em';
+const label = Astro.props.label ?? 'TLXO';
+---
+
+<span class:list={['tlxo-logo', className]} style={`--tlxo-logo-height: ${height};`} role="img" aria-label={label}></span>
+
+<style>
+	.tlxo-logo {
+		display: inline-block;
+		height: var(--tlxo-logo-height);
+		aspect-ratio: 1146 / 438;
+		background-color: currentColor;
+		-webkit-mask: url('/images/tlxo-logo.svg') center / contain no-repeat;
+		mask: url('/images/tlxo-logo.svg') center / contain no-repeat;
+		flex: 0 0 auto;
+		vertical-align: -0.08em;
+	}
+</style>
