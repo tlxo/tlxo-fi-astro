@@ -4,7 +4,7 @@ export const SITE = {
 	title: 'Toni Laakso / tlxo',
 	/** Used as the fallback <meta name="description"> and in the RSS feed. */
 	description: 'Writing about UX, music, instruments, and whatever happens to float my boat.',
-	tagline: 'My home on the web.',
+	tagline: 'Welcome to the winter of my discontent.',
 	url: 'https://tlxo.fi',
 	locale: 'en',
 	/** BCP 47 tag for <html lang>. */
