@@ -4,7 +4,7 @@ This is the current repo to serve [tlxo.fi](https://tlxo.fi).
 
 ## Purpose
 
-Building a personal blog with Astro, like it was both 2005 and 2025.
+Building a personal blog with Astro, like it was both 2006 and 2026.
 
 ## Deployment status
 
