@@ -10,7 +10,6 @@ export const SITE = {
 	/** BCP 47 tag for <html lang>. */
 	lang: 'en',
 	email: 'toni@lxo.fi',
-	defaultOgImage: '/images/og-default.png',
 } as const;
 
 export const AUTHOR = {
