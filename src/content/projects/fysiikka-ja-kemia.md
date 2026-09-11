@@ -1,12 +1,12 @@
 ---
-title: 'Fysiikka & Kemia: Biologia'
+title: 'Fysiikka & Kemia'
 summary: 'Rural psych-jazz improvisations by the Finnish bastard sons of Arbete & Fritid.'
 kind: music
-role: 'Drums and guitar, possibly harmonium'
-year: 2025
-madeWith: ['Improvisation']
+role: 'Guitar and drums, mainly'
+year: 2024
+madeWith: ['Collective improvisation']
 links:
-  - label: 'Listen on Bandcamp'
+  - label: 'Listen to our first release on Bandcamp'
     url: 'https://ultraaanirecords.bandcamp.com/album/biologia'
 featured: true
 ---

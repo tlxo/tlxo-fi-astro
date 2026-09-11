@@ -13,9 +13,12 @@ links:
 featured: true
 ---
 
-A deliberately small personal site, rebuilt so that publishing a post means committing a
-Markdown file and nothing else.
+You're looking at it. 
 
-Content lives in typed collections validated with Zod, so a malformed post fails the build
-rather than rendering incorrectly. Pages ship no JavaScript unless a specific feature needs
-it.
+This site exists because I wanted one corner of the internet I actually own. Not rented from a platform, and not another voice in the general hum of people posting about work on you know where.
+
+It's deliberately a bit of an island and I'm glad that you made your way here.
+
+The site is built like it was both 2006 and 2026 with the discipline of a simpler web running on the tooling available today, attempting to illustrate the timeless Steve Jobs quote ["Design is how it works"](https://www.nytimes.com/2003/11/30/magazine/the-guts-of-a-new-machine.html).
+
+The stack is a part of that argument: a static Astro build with typed, Zod-validated content collections, publishing a post is as simple as committing a Markdown file, and there's no client-side JavaScript unless it's actually needed.
