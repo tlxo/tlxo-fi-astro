@@ -10,7 +10,11 @@ const height = Astro.props.height ?? '1em';
 const label = Astro.props.label ?? 'TLXO';
 ---
 
-<span class:list={['tlxo-logo', className]} style={`--tlxo-logo-height: ${height};`} role="img" aria-label={label}></span>
+<span
+	class:list={['tlxo-logo', className]}
+	style={`--tlxo-logo-height: ${height};`}
+	role="img"
+	aria-label={label}></span>
 
 <style>
 	.tlxo-logo {
