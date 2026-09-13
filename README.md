@@ -25,7 +25,7 @@ The filename becomes the URL: `src/content/blog/my-post.md` is served at `/blog/
 ```md
 ---
 title: 'Post title'
-description: 'One or two sentences. Used in listings, the RSS feed and social previews.'
+description: 'One or two sentences. Used in listings and social previews.'
 pubDate: 2026-09-07
 tags: ['work', 'accessibility']
 author: toni
@@ -39,7 +39,7 @@ Body content here.
 | Field         | Required | Notes                                                             |
 | :------------ | :------- | :---------------------------------------------------------------- |
 | `title`       | yes      |                                                                   |
-| `description` | yes      | Shown in listings, RSS and `og:description`                       |
+| `description` | yes      | Shown in listings and `og:description`                            |
 | `pubDate`     | yes      | `YYYY-MM-DD`                                                      |
 | `updatedDate` | no       | Shown on the post when set                                        |
 | `tags`        | no       | Lowercase kebab-case only — the build fails otherwise             |
