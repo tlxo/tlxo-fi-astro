@@ -3,7 +3,7 @@
 # draft: true keeps it out of production (see isVisible() in src/lib/content.ts)
 # but still visible when running `astro dev`, so you can preview it locally.
 title: 'Your Post Title'
-description: 'One or two sentences for the meta description and RSS feed.'
+description: 'One or two sentences for the meta description and post listings.'
 pubDate: 2026-01-01
 # updatedDate: 2026-01-02 # optional; only add once you actually revise the post
 # Lowercase kebab-case only, e.g. "web-performance". 'note' marks link-blog style
