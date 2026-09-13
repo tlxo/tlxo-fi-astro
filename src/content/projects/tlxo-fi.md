@@ -13,7 +13,7 @@ links:
 featured: true
 ---
 
-You're looking at it. 
+You're looking at it.
 
 This site exists because I wanted one corner of the internet I actually own. Not rented from a platform, and not another voice in the general hum of people posting about work on you know where.
 
