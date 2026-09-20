@@ -12,14 +12,16 @@ advice, it would be *"assumptions about the user context or preference do not tr
 Case in point, VS Code on macOS.
 
 VS Code is built with Electron and it originates from the Windows ecosystem, which can be a dangerous
-combination if you put any value on user experience. On macOS, this premise is unfortunately reflected
-in a glaring disregard towards the conventions of the platform when it comes to keyboard shortcuts.
+combination if you put any value on user experience. On macOS, this premise is reflected in a glaring
+disregard towards the conventions of the platform when it comes to keyboard shortcuts.
 
 You read that correctly, Mac users use keyboard shortcuts too.
 
 If an application wants to act like a good citizen on a platform, it absolutelty should not override
 system-level keyboard shortcuts, like VS Code does on macOS. Try hiding the app with Cmd + H and see
-what happens. Odds are that, depending on the view your in, nothing happens.
+what happens. 
+
+My money is on **nothing**.
 
 If you look for help online to remedy this, it's possible that the expert advice will guide you
 towards the macOS System Settings to resolve the conflict by modifying or disabling the shortcuts
@@ -27,12 +29,12 @@ native to the platform. That's such an awful example of backwards thinking that 
 coming up with an analogy for it. I will update this post when I do.
 
 When compared with the majority of Electron apps out there, the one good thing with VS Code is that
-it is customizable. In the perfect world I would not have to do this myself, but it is possible for
-me to bring up the ``keybindings.json`` (Cmd + Shift + P -> Preferences: Open Keyboard Shortcuts
-(JSON)) and essentially nuke the offending bindings originating from Windows.
+it is customizable. In the perfect world I would not have to do this myself, but it is possible to
+bring up the ``keybindings.json`` (Cmd + Shift + P -> Preferences: Open Keyboard Shortcuts (JSON))
+and essentially nuke the offending bindings originating from Windows.
 
-Here's what my ``keybindings.json`` looks like. Look closely at those first four. That minus is a
-mighty weapon.
+Here's what my ``keybindings.json`` looks like. Look closely at those first four. That minus that
+in the beginning of the values for *"command"* is a mighty weapon.
 
 ```json
 // Restore Cmd+H to native macOS application hide
@@ -62,4 +64,4 @@ mighty weapon.
 }
 ```
 
-Now, if there only was a way to make Mac Catalyst apps like **Music** to act like native Mac apps...
+Now, if there only was a way to force Mac Catalyst apps like **Music** act like native Mac apps...
