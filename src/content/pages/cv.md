@@ -5,16 +5,19 @@ order: 2
 ---
 
 Software Generalist / Accessibility Specialist (IAAP CPWA)  
-Finnish (native) · Swedish & English (full professional)  
-[toni@lxo.fi](mailto:toni@lxo.fi) • [github.com/tlxo](https://github.com/tlxo) • [linkedin.com/in/tonilaakso](https://linkedin.com/in/tonilaakso)
+Finnish (native) · Swedish & English (full professional)
 
 ## Summary
 
-20+ years in software: release engineering, QA, product ownership, web development, and UX, with the last several years focused on digital accessibility, mostly through research, review, and direction rather than day-to-day implementation.
+20+ years in software: release engineering, QA, product ownership, web development, and UX, with the
+last several years focused on digital accessibility.
 
 ## Skills
 
-**Accessibility**: IAAP CPWA, WCAG 2.2, ARIA, screen reader testing (VoiceOver, NVDA), Deque tooling; **Design tooling**: Figma et al (design review, handoff to component); **Frontend**: Semantic HTML, design systems, React, TypeScript; **Practice**: AI-assisted development (GitHub Copilot), Git/GitHub workflows, UX research, product ownership
+**Practice**: Research, design, development, Git/GitHub workflows, product ownership;
+**Accessibility**: IAAP CPWA, WCAG 2.2, ARIA, screen reader testing (VoiceOver, NVDA), Deque tooling;
+**Design tooling**: Figma et al;
+**Frontend**: Semantic HTML, design systems, React, TypeScript;
 
 ## Experience
 
