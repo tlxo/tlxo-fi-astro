@@ -1,6 +1,6 @@
 import rss from '@astrojs/rss';
 import type { APIContext } from 'astro';
-import { getPublishedPosts, isNote } from '../lib/content';
+import { getPublishedPosts, isNote, withPublishTime } from '../lib/content';
 import { SITE } from '../consts';
 
 export async function GET(context: APIContext) {
@@ -13,7 +13,7 @@ export async function GET(context: APIContext) {
 			title: post.data.title,
 			description: post.data.description,
 			content: post.rendered.html,
-			pubDate: post.data.pubDate,
+			pubDate: withPublishTime(post.data.pubDate),
 			link: `/blog/${post.id}/`,
 			categories: [...post.data.tags],
 			// Link-blog notes point outward; keep the permalink as the guid.

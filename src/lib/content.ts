@@ -10,6 +10,13 @@ const isVisible = (entry: { data: { draft: boolean } }): boolean =>
 
 const byNewest = (a: Post, b: Post): number => b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
 
+/** Frontmatter dates are date-only; fix a time so RSS readers don't guess one for us. */
+export const withPublishTime = (date: Date): Date => {
+	const withTime = new Date(date);
+	withTime.setUTCHours(13, 37, 0, 0);
+	return withTime;
+};
+
 /**
  * `getCollection()` order is non-deterministic, so every query sorts here.
  * Routes should never call `getCollection('blog')` directly.
