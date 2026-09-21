@@ -83,3 +83,6 @@ const schema = isHome
 <link rel="alternate" type="application/rss+xml" title={`${SITE.title} — Blog`} href="/rss.xml" />
 
 <script is:inline set:html={JSON.stringify(schema)} type="application/ld+json" />
+{import.meta.env.PROD && (
+	<script is:inline data-goatcounter="https://tlxofi.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+)}
