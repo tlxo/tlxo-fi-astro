@@ -5,8 +5,10 @@ updatedDate: 2026-09-23
 order: 99
 ---
 
-This site uses [GoatCounter](https://goatcounter.com) for visitor intelligence. The choice to not ask for user consent
-for this is deliberate. We don't believe it to be required by law, as we aren't able to identify individual visitors.
+This site uses [GoatCounter](https://goatcounter.com) for visitor intelligence. 
+
+The choice to not ask for user consent for this is deliberate. We don't believe it to be required by law, as we aren't
+able to identify individual visitors.
 
 Recital 26 of the [GDPR](https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32016R0679) states:
 
