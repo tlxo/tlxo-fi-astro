@@ -210,6 +210,25 @@ figcaption {
 	text-decoration: underline;
 }
 
+.prose mark {
+	background-color: var(--color-accent-soft);
+	color: var(--color-selection-text);
+}
+
+.prose kbd {
+	font-family: var(--font-mono);
+	font-size: 0.875em;
+	padding: 0.125em 0.375em;
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-sm);
+	background-color: var(--color-surface-raised);
+}
+
+.prose abbr {
+	text-decoration: underline dotted;
+	cursor: help;
+}
+
 .skip-link {
 	position: absolute;
 	left: var(--space-sm);

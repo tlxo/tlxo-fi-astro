@@ -5,7 +5,7 @@ updatedDate: 2026-09-23
 order: 99
 ---
 
-This site uses [GoatCounter](https://goatcounter.com) for visitor intelligence. 
+This site uses [GoatCounter](https://goatcounter.com) for visitor intelligence.
 
 The choice to not ask for user consent for this is deliberate. We don't believe it to be required by law, as we aren't
 able to identify individual visitors.
