@@ -27,4 +27,6 @@ Recital 26 of the [GDPR](https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri
 
 GoatCounter doesn't collect any personally identifiable information. It doesn't store IP addresses, the full User-Agent
 header, or any kind of tracker ID. It also doesn’t store any information in the browser with cookies, localStorage, cache,
-or any other method. Please refer to the [GoatCounter privacy policy](https://www.goatcounter.com/help/privacy) for details.
+or any other method.
+
+Please refer to the [GoatCounter privacy policy](https://www.goatcounter.com/help/privacy) for details.
