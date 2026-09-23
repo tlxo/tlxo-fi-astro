@@ -4,6 +4,8 @@ description: 'Toni Laakso — software generalist and accessibility specialist (
 order: 2
 ---
 
+## Toni Laakso
+
 Software Generalist / Accessibility Specialist (IAAP CPWA)  
 Finnish (native) · Swedish & English (full professional)
 
