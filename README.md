@@ -8,9 +8,7 @@ Building a personal blog with Astro, like it was both 2006 and 2026.
 
 ## Deployment status
 
-The site lives on Netlify and you can access it at [tlxo.fi](https://tlxo.fi).
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/c86f0f42-b4ff-4d7b-a178-53f5375f2c26/deploy-status)](https://app.netlify.com/sites/tlxo-fi/deploys)
+The site lives at [Statichost](https://www.statichost.eu/) and you can access it at [tlxo.fi](https://tlxo.fi).
 
 Pushing to `main` triggers a production build. Pull requests get a deploy preview, plus a
 GitHub Actions run that type-checks, lints and builds.
