@@ -1,0 +1,6 @@
+{
+	// MD033 (no-inline-html): keep the same allowlist as the rehype-sanitize schema in astro.config.mjs.
+	"MD033": {
+		"allowed_elements": ["mark", "kbd", "sub", "sup", "abbr"]
+	}
+}
