@@ -14,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -28,7 +30,14 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Format check
+      - name: Format check (PR changes)
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: npm run format:check:changed -- "$BASE_SHA"
+
+      - name: Format check (full repository)
+        if: github.event_name == 'workflow_dispatch'
         run: npm run format:check
 
       - name: Build
