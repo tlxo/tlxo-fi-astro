@@ -7,7 +7,7 @@ author: toni
 ---
 
 If I had to boil down my frustrations with software and user experience to one simple piece of
-advice, it would be *"assumptions about the user context or preference do not travel well"*.
+advice, it would be _"assumptions about the user context or preference do not travel well"_.
 
 Case in point, VS Code on macOS.
 
@@ -19,7 +19,7 @@ You read that correctly, Mac users use keyboard shortcuts too.
 
 If an application wants to act like a good citizen on a platform, it absolutelty should not override
 system-level keyboard shortcuts, like VS Code does on macOS. Try hiding the app with Cmd + H and see
-what happens. 
+what happens.
 
 My money is on **nothing**.
 
@@ -30,17 +30,17 @@ coming up with an analogy for it. I will update this post when I do.
 
 When compared with the majority of Electron apps out there, the one good thing with VS Code is that
 it is customizable. In the perfect world I would not have to do this myself, but it is possible to
-bring up the ``keybindings.json`` (Cmd + Shift + P -> Preferences: Open Keyboard Shortcuts (JSON))
+bring up the `keybindings.json` (Cmd + Shift + P -> Preferences: Open Keyboard Shortcuts (JSON))
 and essentially nuke the offending bindings originating from Windows.
 
-Here's what my ``keybindings.json`` looks like. Look closely at those first four. That minus that
-in the beginning of the values for *"command"* is a mighty weapon.
+Here's what my `keybindings.json` looks like. Look closely at those first four. That minus that
+in the beginning of the values for _"command"_ is a mighty weapon.
 
 ```json
 // Restore Cmd+H to native macOS application hide
 { "key": "cmd+h", "command": "-editor.action.startFindReplaceAction" },
 
-// Restore Cmd+M to native macOS application Minimize 
+// Restore Cmd+M to native macOS application Minimize
 // (VS Code uses this for Toggle Tab Key Moves Focus)
 { "key": "cmd+m", "command": "-editor.action.toggleTabFocusMode" },
 
