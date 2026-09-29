@@ -5,7 +5,11 @@
 
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/" 
+  - package-ecosystem: 'npm'
+    directory: '/'
     schedule:
-      interval: "weekly"
+      interval: 'weekly'
+    ignore:
+      # @astrojs/check allows ^5||^6 and typescript-eslint allows <6.1.0; lift when both support newer.
+      - dependency-name: 'typescript'
+        versions: ['>=6.1.0']
