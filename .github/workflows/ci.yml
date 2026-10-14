@@ -42,3 +42,11 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Guard against template routes
+        run: |
+          template_path=$(find dist \( -path '*/_template' -o -path '*/_template/*' \) -print -quit)
+          if [ -n "$template_path" ]; then
+            echo "A content template leaked into the build output: $template_path"
+            exit 1
+          fi
