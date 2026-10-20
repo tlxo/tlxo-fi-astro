@@ -1,0 +1,32 @@
+name: Accessibility Scanner
+
+on: workflow_dispatch
+
+permissions:
+  contents: read
+
+concurrency:
+  group: accessibility-scan-production
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Scan production accessibility
+        uses: github/accessibility-scanner@b9ff6911fdcdb17032a2fda1013b77bb4bff76b3
+        with:
+          urls: |
+            https://tlxo.fi/about/
+            https://tlxo.fi/blog/
+            https://tlxo.fi/blog/vscode-keybindings/
+            https://tlxo.fi/cv/
+            https://tlxo.fi/search/
+            https://tlxo.fi/projects/
+            https://tlxo.fi/projects/tlxo-fi/
+          repository: ${{ github.repository }}
+          token: ${{ secrets.GH_TOKEN }}
+          cache_key: cached-results-tlxo.fi-production.json
+          skip_copilot_assignment: true
+          group_by: rule
+          dry_run: false
