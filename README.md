@@ -13,6 +13,33 @@ The site lives at [Statichost](https://www.statichost.eu/) and you can access it
 Pushing to `main` triggers a production build. Pull requests get a deploy preview, plus a
 GitHub Actions run that type-checks, lints and builds.
 
+## Accessibility scans
+
+Run **Actions > Accessibility Scanner > Run workflow** to scan the deployed site.
+With both inputs empty, the scan uses the seven representative URLs defined in
+`scripts/accessibility-scan-urls.mjs`.
+
+- Set only `head_ref` to a commit SHA or Git ref to scan changes against its first parent.
+- Set both `base_ref` and `head_ref` to compare two commits or refs.
+- Set only `base_ref` to compare it with the selected workflow commit.
+
+References select changed files, not a historical deployment. The scanner always visits
+the current `https://tlxo.fi` site, so wait for the relevant deployment to finish first.
+Use the workflow's default branch selection to discover currently available routes;
+the optional refs do not change the checked-out version or the deployed site.
+
+Targeted runs build the checked-out site to discover public routes, excluding drafts and
+deleted pages. Blog changes include all posts, blog listings, pagination, tags, home and
+search because related-post and adjacent-post links can change. Project changes include
+all project routes, home and search. Standalone-page changes include all standalone
+routes. Shared components, styles, routes, authors, public assets and build configuration
+select all built pages. Documentation-only changes skip the scan.
+
+Scans create issues grouped by accessibility rule, without assigning Copilot. Each URL set
+has its own persistent cache so a partial scan cannot close findings on unscanned pages.
+Overlapping URL sets can create duplicate issues, and only rerunning the same URL set
+reconciles its previous findings. Default scans keep their existing cache.
+
 ## Publishing a post
 
 Add a Markdown file to `src/content/blog/` and commit it. That is the whole workflow — it

@@ -1,6 +1,16 @@
 name: Accessibility Scanner
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      base_ref:
+        description: 'Base Git ref or SHA (optional; defaults to the first parent of head)'
+        required: false
+        type: string
+      head_ref:
+        description: 'Head Git ref or SHA (optional; defaults to the selected workflow commit)'
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -13,20 +23,40 @@ jobs:
   scan:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - name: Install dependencies for route discovery
+        if: inputs.base_ref != '' || inputs.head_ref != ''
+        run: npm ci
+
+      - name: Build available routes
+        if: inputs.base_ref != '' || inputs.head_ref != ''
+        run: npm run build
+
+      - name: Select production URLs
+        id: scope
+        env:
+          BASE_REF: ${{ inputs.base_ref }}
+          HEAD_REF: ${{ inputs.head_ref }}
+        run: |
+          node --test scripts/accessibility-scan-urls.test.mjs
+          node scripts/accessibility-scan-urls.mjs
+
       - name: Scan production accessibility
+        if: steps.scope.outputs.has_urls == 'true'
         uses: github/accessibility-scanner@b9ff6911fdcdb17032a2fda1013b77bb4bff76b3
         with:
-          urls: |
-            https://tlxo.fi/about/
-            https://tlxo.fi/blog/
-            https://tlxo.fi/blog/vscode-keybindings/
-            https://tlxo.fi/cv/
-            https://tlxo.fi/search/
-            https://tlxo.fi/projects/
-            https://tlxo.fi/projects/tlxo-fi/
+          urls: ${{ steps.scope.outputs.urls }}
           repository: ${{ github.repository }}
           token: ${{ secrets.GH_TOKEN }}
-          cache_key: cached-results-tlxo.fi-production.json
+          cache_key: ${{ steps.scope.outputs.cache_key }}
           skip_copilot_assignment: true
           group_by: rule
           dry_run: false
