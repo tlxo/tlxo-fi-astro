@@ -4,7 +4,7 @@ summary: 'This site. A static Astro build with typed content collections, deploy
 kind: software
 role: 'Design and development'
 year: 2026
-madeWith: ['Astro', 'TypeScript', 'React', 'Netlify']
+madeWith: ['Astro', 'TypeScript', 'React', 'Statichost']
 links:
   - label: 'Visit site'
     url: 'https://tlxo.fi'

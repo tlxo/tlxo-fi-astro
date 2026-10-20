@@ -1,6 +1,6 @@
 name: CI
 
-# Netlify owns deploys; this is a guard on pull requests only.
+# Statichost owns deploys; this workflow validates changes only.
 on:
   pull_request:
     branches: [main]

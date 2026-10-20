@@ -10,8 +10,9 @@ Building a personal blog with Astro, like it was both 2006 and 2026.
 
 The site lives at [Statichost](https://www.statichost.eu/) and you can access it at [tlxo.fi](https://tlxo.fi).
 
-Pushing to `main` triggers a production build. Pull requests get a deploy preview, plus a
-GitHub Actions run that type-checks, lints and builds.
+Pushing to `main` triggers production builds. Pull requests run GitHub Actions
+checks for types, lint, formatting and build output. Statichost does not
+currently provide automatic pull request deploy previews.
 
 ## Accessibility scans
 
@@ -44,8 +45,9 @@ reconciles its previous findings. Default scans keep their existing cache.
 
 ## Publishing a post
 
-Add a Markdown file to `src/content/blog/` and commit it. That is the whole workflow — it
-works from the GitHub web editor, no local checkout needed. Netlify rebuilds on push.
+Add a Markdown file to `src/content/blog/` and commit it. That is the whole
+workflow. It works from the GitHub web editor without a local checkout;
+Statichost rebuilds on push.
 
 The filename becomes the URL: `src/content/blog/my-post.md` is served at `/blog/my-post/`.
 
