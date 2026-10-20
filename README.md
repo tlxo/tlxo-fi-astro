@@ -15,6 +15,8 @@ GitHub Actions run that type-checks, lints and builds.
 
 ## Accessibility scans
 
+[![Accessibility Scanner](https://github.com/tlxo/tlxo-fi-astro/actions/workflows/accessibility-scan.yml/badge.svg)](https://github.com/tlxo/tlxo-fi-astro/actions/workflows/accessibility-scan.yml)
+
 Run **Actions > Accessibility Scanner > Run workflow** to scan the deployed site.
 With both inputs empty, the scan uses the seven representative URLs defined in
 `scripts/accessibility-scan-urls.mjs`.
