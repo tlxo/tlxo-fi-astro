@@ -14,6 +14,13 @@ Pushing to `main` triggers production builds. Pull requests run GitHub Actions
 checks for types, lint, formatting and build output. Statichost does not
 currently provide automatic pull request deploy previews.
 
+Local development and GitHub Actions use the exact Node version in `.nvmrc`.
+Keep it aligned with the `node:` image tag in `statichost.yml` when updating Node.
+The minimum supported Node version is declared in `package.json`; npm rejects
+installs when the runtime does not meet project or dependency engine requirements.
+Dependabot's npm updates do not update the hosting image or `.nvmrc`, so dependency
+updates that raise the Node minimum require a coordinated runtime update.
+
 ## Accessibility scans
 
 [![Accessibility Scanner](https://github.com/tlxo/tlxo-fi-astro/actions/workflows/accessibility-scan.yml/badge.svg)](https://github.com/tlxo/tlxo-fi-astro/actions/workflows/accessibility-scan.yml)
