@@ -49,6 +49,7 @@ const projects = defineCollection({
 				kind: z.enum(PROJECT_KINDS),
 				role: z.string().optional(),
 				year: z.number().int().min(1900).max(2100),
+				tag: tag.optional(),
 				/** Stack, instruments, timbers, whatever the project was made from. */
 				madeWith: z.array(z.string()).default([]),
 				links: z.array(z.object({ label: z.string().min(1), url: z.string().url() })).default([]),

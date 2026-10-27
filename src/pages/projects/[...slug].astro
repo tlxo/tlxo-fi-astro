@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getPublishedProjects } from '../../lib/content';
+import { getPostsByTag, getPublishedProjects } from '../../lib/content';
 import { PROJECT_KIND_LABELS } from '../../consts';
 
 export async function getStaticPaths() {
@@ -12,8 +12,15 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { Content } = await render(project);
-const { title, summary, role, year, kind, madeWith, links, cover, coverAlt } = project.data;
+const { title, summary, role, year, kind, tag, madeWith, links, cover, coverAlt } = project.data;
 const vocabulary = PROJECT_KIND_LABELS[kind];
+const relatedPosts = tag
+	? (await getPostsByTag(tag)).sort((a, b) => {
+			const dateA = a.data.updatedDate ?? a.data.pubDate;
+			const dateB = b.data.updatedDate ?? b.data.pubDate;
+			return dateA.valueOf() - dateB.valueOf() || a.data.title.localeCompare(b.data.title);
+		})
+	: [];
 ---
 
 <BaseLayout title={title} description={summary}>
@@ -26,6 +33,23 @@ const vocabulary = PROJECT_KIND_LABELS[kind];
 		<div class="prose">
 			<Content />
 		</div>
+
+		{relatedPosts.length > 0 && (
+			<>
+				<h2>Related posts</h2>
+				<ul>
+					{relatedPosts.map((post) => {
+						const date = post.data.updatedDate ?? post.data.pubDate;
+						return (
+							<li>
+								<a href={`/blog/${post.id}/`}>{post.data.title}</a> (
+								<time datetime={date.toISOString()}>{date.toISOString().slice(0, 10)}</time>)
+							</li>
+						);
+					})}
+				</ul>
+			</>
+		)}
 
 		{
 			madeWith.length > 0 && (

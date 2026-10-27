@@ -9,6 +9,7 @@ summary: 'One sentence describing the project.'
 kind: software
 # role: 'What you did on this project' # optional
 year: 2026 # required; used to sort projects newest-first
+# tag: 'my-tag' # optional; show blog posts with this tag as related posts
 # madeWith: ['Astro', 'TypeScript'] # optional; stack, instruments, materials, etc.
 # links: # optional array of { label, url }
 #   - label: 'Visit site'
