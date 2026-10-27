@@ -94,6 +94,41 @@ separated by tags (`work`, `personal`), not by folders or URLs.
 Tags must be lowercase kebab-case. This is enforced by the content schema, so a typo like
 `Note` or `web performance` fails the build rather than quietly creating an orphan tag page.
 
+### Embedding audio
+
+Rename a post to `.mdx` to embed the reusable player. Supply the title and artist shown
+alongside the player; provider embeds also show their own playback metadata. Artwork is
+optional and decorative when the title is already present. SoundCloud takes a track URL,
+Bandcamp takes the `src` URL from its official small-player embed code, and `file` takes a
+direct audio file URL or site path.
+
+```mdx
+import AudioPlayer from '../../components/AudioPlayer.astro';
+
+<AudioPlayer
+  provider="soundcloud"
+  src="https://soundcloud.com/artist/track"
+  title="Track title"
+  artist="Artist name"
+  artwork="https://example.com/cover.jpg"
+  transcriptUrl="/transcripts/track/"
+/>
+```
+
+Use `provider="bandcamp"` with its official `https://bandcamp.com/EmbeddedPlayer/...` URL,
+or `provider="file"` with a direct audio source. File playback uses the browser's native
+controls and does not preload the audio. Players do not autoplay. Provide a transcript or
+equivalent text alternative when needed for prerecorded audio-only content. MDX posts use
+their description as the RSS content.
+
+MDX supports executable components and is not passed through the Markdown HTML sanitizer.
+Only use trusted MDX source.
+
+SoundCloud and Bandcamp playback controls are third-party iframes. The site labels each
+iframe and presents author-supplied title, artist and artwork, but cannot ensure that
+third-party controls meet WCAG 2.2. Verify keyboard and assistive-technology behavior with
+the actual embed before relying on it.
+
 ### Other content
 
 - `src/content/pages/` — standalone pages, served at `/<filename>/`

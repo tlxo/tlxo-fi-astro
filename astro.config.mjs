@@ -34,7 +34,7 @@ export default defineConfig({
 	site: 'https://tlxo.fi',
 	trailingSlash: 'always',
 	integrations: [
-		mdx(),
+		mdx({ extendMarkdownConfig: false }),
 		react(),
 		sitemap({
 			// Paginated and noindex routes add nothing for crawlers.

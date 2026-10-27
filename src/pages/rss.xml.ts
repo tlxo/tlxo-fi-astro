@@ -6,13 +6,15 @@ import { SITE } from '../consts';
 export async function GET(context: APIContext) {
 	const posts = await getPublishedPosts();
 	const items = posts.map((post) => {
-		if (!post.rendered?.html) {
+		const renderedContent = post.rendered?.html;
+		if (!renderedContent && !post.filePath?.endsWith('.mdx')) {
 			throw new Error(`Missing rendered HTML for blog post: ${post.id}`);
 		}
 		return {
 			title: post.data.title,
 			description: post.data.description,
-			content: post.rendered.html,
+			// MDX entries are rendered as components on their pages; RSS uses their summary.
+			content: renderedContent ?? post.data.description,
 			pubDate: withPublishTime(post.data.pubDate),
 			link: `/blog/${post.id}/`,
 			categories: [...post.data.tags],

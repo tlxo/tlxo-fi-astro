@@ -1,0 +1,165 @@
+---
+type SharedProps = {
+	title: string;
+	artist?: string;
+	artwork?: string;
+	transcriptUrl?: string;
+	transcriptLabel?: string;
+};
+
+type Props = SharedProps &
+	(
+		| { provider: 'file'; src: string }
+		| { provider: 'soundcloud'; src: string }
+		| { provider: 'bandcamp'; src: string }
+	);
+
+const { provider, src, title, artist, artwork, transcriptUrl, transcriptLabel } = Astro.props;
+
+let playerUrl: string | undefined;
+
+if (provider === 'soundcloud') {
+	let trackUrl: URL;
+	try {
+		trackUrl = new URL(src);
+	} catch {
+		throw new Error('AudioPlayer SoundCloud src must be an absolute SoundCloud track URL.');
+	}
+
+	if (
+		trackUrl.protocol !== 'https:' ||
+		!['soundcloud.com', 'www.soundcloud.com'].includes(trackUrl.hostname)
+	) {
+		throw new Error('AudioPlayer SoundCloud src must be an HTTPS URL on soundcloud.com.');
+	}
+
+	const widgetUrl = new URL('https://w.soundcloud.com/player/');
+	widgetUrl.searchParams.set('url', trackUrl.href);
+	widgetUrl.searchParams.set('auto_play', 'false');
+	widgetUrl.searchParams.set('show_artwork', 'true');
+	widgetUrl.searchParams.set('show_user', 'true');
+	playerUrl = widgetUrl.href;
+}
+
+if (provider === 'bandcamp') {
+	let embedUrl: URL;
+	try {
+		embedUrl = new URL(src);
+	} catch {
+		throw new Error('AudioPlayer Bandcamp src must be an absolute Bandcamp embed URL.');
+	}
+
+	if (
+		embedUrl.protocol !== 'https:' ||
+		embedUrl.hostname !== 'bandcamp.com' ||
+		!embedUrl.pathname.startsWith('/EmbeddedPlayer/')
+	) {
+		throw new Error('AudioPlayer Bandcamp src must be an HTTPS Bandcamp EmbeddedPlayer URL.');
+	}
+
+	playerUrl = embedUrl.href;
+}
+
+const iframeTitle = `${provider === 'soundcloud' ? 'SoundCloud' : 'Bandcamp'} player: ${title}`;
+---
+
+<figure class="audio-player">
+	{artwork && (
+		<img class="audio-player__artwork" src={artwork} alt="" width="96" height="96" loading="lazy" />
+	)}
+	<figcaption class="audio-player__metadata">
+		<strong>{title}</strong>
+		{artist && <span>{artist}</span>}
+	</figcaption>
+
+	{provider === 'file' ? (
+		<audio
+			controls
+			preload="none"
+			aria-label={`Audio player: ${title}${artist ? ` by ${artist}` : ''}`}
+		>
+			<source src={src} />
+			Your browser does not support audio playback.
+		</audio>
+	) : (
+		<iframe
+			class:list={['audio-player__embed', `audio-player__embed--${provider}`]}
+			src={playerUrl}
+			title={iframeTitle}
+			loading="lazy"
+		/>
+	)}
+
+	{transcriptUrl && (
+		<p class="audio-player__transcript">
+			<a href={transcriptUrl}>{transcriptLabel ?? `Transcript for ${title}`}</a>
+		</p>
+	)}
+</figure>
+
+<style>
+	.audio-player {
+		display: grid;
+		grid-template-columns: auto minmax(0, 1fr);
+		align-items: center;
+		gap: var(--space-xs);
+		padding: var(--space-sm);
+		border: var(--border-thin);
+		border-radius: var(--radius-md);
+		background: var(--color-surface);
+	}
+
+	.audio-player__artwork {
+		grid-row: span 2;
+		width: 6rem;
+		height: 6rem;
+		object-fit: cover;
+		border-radius: var(--radius-sm);
+	}
+
+	.audio-player__metadata {
+		display: grid;
+		gap: var(--space-3xs);
+		min-width: 0;
+	}
+
+	.audio-player__metadata span {
+		color: var(--color-text-muted);
+		font-size: var(--text-sm);
+	}
+
+	.audio-player audio,
+	.audio-player__embed {
+		grid-column: 1 / -1;
+		width: 100%;
+	}
+
+	.audio-player audio {
+		min-height: 2.75rem;
+	}
+
+	.audio-player__embed {
+		border: 0;
+	}
+
+	.audio-player__embed--soundcloud {
+		height: 166px;
+	}
+
+	.audio-player__embed--bandcamp {
+		height: 120px;
+	}
+
+	.audio-player__transcript {
+		grid-column: 1 / -1;
+		margin: 0;
+		font-size: var(--text-sm);
+	}
+
+	@media (max-width: 24rem) {
+		.audio-player__artwork {
+			width: 4.5rem;
+			height: 4.5rem;
+		}
+	}
+</style>
