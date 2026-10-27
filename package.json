@@ -33,7 +33,7 @@
 		"rehype-sanitize": "^6.0.0"
 	},
 	"devDependencies": {
-		"@astrojs/check": "^0.9.10",
+		"@astrojs/check": "^0.9.12",
 		"@eslint/js": "^10.0.1",
 		"@types/react": "^19.2.18",
 		"@types/react-dom": "^19.3.0",
